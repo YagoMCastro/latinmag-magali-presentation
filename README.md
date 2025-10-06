@@ -2,7 +2,7 @@
 
 **Presenter**: Yago Moreira Castro
 
-**Preview:** [https://yagomcastro.github.io/magali-msc-qualification](https://yagomcastro.github.io/magali-msc-qualification)
+**Preview:** [https://yagomcastro.github.io/latinmag-magali-presentation](https://yagomcastro.github.io/latinmag-magali-presentation)
 
 > A template by Leonardo Uieda was used to create this presentation:
 > https://github.com/leouieda/talk-template
