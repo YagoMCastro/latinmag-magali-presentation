@@ -1,4 +1,4 @@
-name: talk
+name: latinmag
 channels:
   - conda-forge
   - defaults

@@ -13,7 +13,7 @@ The reveal.js configuration can be found in index.html
 
 <h1 id="talk-title">
   
-  Magali: Modelling and inversion of magnetic microscopy data 🧲🔬
+  Open-source solutions for the magnetic microscopy comunity 🧲🔬
 
 </h1>
 <p id="talk-authors">
@@ -25,9 +25,9 @@ The reveal.js configuration can be found in index.html
 <div class="col-large">
 
 <i class="fa fa-calendar-alt" style="margin: 0 10px 0 0"></i>
-15 April 2022
+[DATE] October 2025
 <span style="margin: 0 20px"></span>
-Master's Degree Seminar | IAG
+$8^{th}$ Biennial LATINMAG Meeting | Morelia, Mexico
 
 <!-- Permission to reuse and CC-BY license logo -->
 <i class="fa fa-camera" style="margin: 0 10px 0 0"></i>
@@ -42,37 +42,14 @@ Feel free to screenshot/share/reuse this presentation
 <div class="talk-logos-container">
 <div class="talk-logos">
   <a href="https://www.compgeolab.org"><img src="assets/compgeolab-banner-light.svg" alt="Computer-Oriented Geoscience Lab"></a>
-  <!-- <a href="https://www.iag.usp.br/"><img src="assets/iag.png" alt="Instituto de Astronomia, Geofísica e Ciências Atmosféricas"></a>
-  <a href="https://www.usp.br/"><img src="assets/usp.png" alt="Universidade de São Paulo"></a> -->
+  <a href="https://www.iag.usp.br/"><img src="assets/iag.png" alt="Instituto de Astronomia, Geofísica e Ciências Atmosféricas"></a>
+  <a href="https://www.iag.usp.br/"><img src="assets/latinmag_logo.jpg" alt="Logo LATINMAG"></a>
+  <!-- <a href="https://www.usp.br/"><img src="assets/usp.png" alt="Universidade de São Paulo"></a> -->
 </div>
 </div>
 
 </div>
 </div>
-
-===============================================================================
-# What is Paleomagnetism?
-- The study of Earth’s magnetic field as <b>recorded</b> in rocks.
-
-===============================================================================
-# How minerals are magnetized?
-<ul>
-  <li class="fragment"><b>Thermoremanent Magnetization (TRM): </b>igneous rocks record Earth’s magnetic field as they cool below the Curie point</li>
-  <li class="fragment"><b>Depositional Remanent Magnetization (DRM):</b> magnetic particles in sediments align with Earth’s field during deposition in aquatic environments</li>
-</ul>
-
-===============================================================================
-# Why is paleomagnetism important?
-
-<ul>
-<li class="fragment"><b>Geomagnetic reversals:</b> shows that Earth's magnetic field has flipped many times throughout its history</li>
-<li class="fragment"><b>Continental drift and plate tectonics:</b> helped confirm the theory of continental drift and reconstruct past positions of the continents</li>
-<li class="fragment"><b>Geological dating:</b> used as a relative dating tool by comparing rock records with the known magnetic reversal timescale (magnetostratigraphy)</li>
-<li class="fragment"><b>Paleofield reconstruction:</b> allows us to understand how Earth’s magnetic field has evolved over hundreds of millions of years</li>
-</ul>
-
-===============================================================================
-<img src="assets/geomag.svg" style="width: 50%" >
 
 ===============================================================================
 <div class="r-stretch">
@@ -80,6 +57,22 @@ Feel free to screenshot/share/reuse this presentation
 </div>
 
 ===============================================================================
+
+<img src="assets/bellon_paper.png" style="width: 80%" >
+
+===============================================================================
+
+<h1>Key Points</h1>
+<ul>
+  <li class="fragment">Most paleomagnetic carriers are <b>not ideal SD grains</b>, but particles in <b>vortex or PSD states</b></li>
+  <li class="fragment">Bulk magnetization averages out grain-scale variability, limiting interpretation of recording fidelity</li> 
+  <li class="fragment"></li> 
+  <li class="fragment">To understand TRM reliability, we must directly probe <b>individual magnetic grains</b> and their domain states</li>  
+</ul>
+
+
+===============================================================================
+
 <div class="r-stretch">
 
   <img src="assets/microscope-sample.svg" height=100%>
