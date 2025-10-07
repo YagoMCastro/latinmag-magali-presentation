@@ -58,7 +58,42 @@ Feel free to screenshot/share/reuse this presentation
 
 ===============================================================================
 
+<img src="assets/berndt_paper.png" style="width: 80%" >
+
+===============================================================================
+
+<h1>The Reliability Question</h1>
+
+<ul>
+  <li class="fragment"><b>Berndt et al. (2016)</b> modeled idealized, equidimensional single-domain (SD) magnetite grains</li>
+  <li class="fragment">They concluded that a reliable TRM requires <b>millions to billions of particles</b></li>
+  <li class="fragment">Small-scale methods would therefore be <b>statistically unreliable</b></li>
+  <li class="fragment">This created doubt about <b>whether a few grains</b> can faithfully record field direction</li>
+</ul>
+
+<div class="footnote-left">
+
+[Berndt et al. (2016)](https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2015JB012441)
+</div>
+
+===============================================================================
+
 <img src="assets/bellon_paper.png" style="width: 80%" >
+
+===============================================================================
+
+<h1>Revisiting the Assumptions</h1>
+
+<ul>
+  <li class="fragment"><b>Bellon et al. (2025)</b> tested more realistic, <b>non-equidimensional grains</b> using micromagnetic modeling</li>
+  <li class="fragment">Ellipsoidal (prolate, oblate, triaxial) shapes better represent <b>natural magnetic particles</b></li>
+  <li class="fragment">Found that <b>grain morphology stabilizes magnetization</b> even within the “magnetically unstable zone”</li>
+  <li class="fragment">Assemblages of only <b>tens to hundreds of grains</b> can produce a coherent TRM direction</li>
+</ul>
+
+<div class="footnote-left">
+Bellon et al. (2025)
+</div>
 
 ===============================================================================
 
