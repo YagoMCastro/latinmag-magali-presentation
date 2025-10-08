@@ -111,8 +111,6 @@ Angular misfit between the applied field and TRMs, averaged across different gra
 <ul>
   <li class="fragment">Most paleomagnetic carriers are <b>not ideal SD grains</b>, but particles in <b>vortex or PSD states</b></li>
   <li class="fragment">Bulk magnetization averages out grain-scale variability, limiting interpretation of recording fidelity</li> 
-  <li class="fragment"></li> 
-  <li class="fragment">To understand TRM reliability, we must directly probe <b>individual magnetic grains</b> and their domain states</li>  
 </ul>
 
 
@@ -269,6 +267,9 @@ Modelling and processing magnetic microscopy data
 </ul>
 <p class="fragment text-left" data-fragment-index="10"><b>Step 3 - Repeat detection on residual data:</b> Apply steps 1 and 2  to the stripped dataset to identify new sources and compute their parameters
 
+
+===============================================================================
+<!-- .slide: data-background-opacity="1" data-background-image="assets/detection.png"  data-background-size="contain" data-background-color="#262626" -->
 
 ===============================================================================
 
