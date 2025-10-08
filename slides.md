@@ -92,8 +92,18 @@ Feel free to screenshot/share/reuse this presentation
 </ul>
 
 <div class="footnote-left">
-Bellon et al. (2025)
+
+[Bellon et al. (2025)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025GL114771)
 </div>
+
+===============================================================================
+
+<img src="assets/bellon_result.png" style="width: 50%">
+
+<div class="footnote">
+
+Angular misfit between the applied field and TRMs, averaged across different grain morphologies. In panel (a), angular misfits were averaged across morphologies for the same number of particles at each field intensity, with bars representing the corresponding standard deviations. In panel (b), the averaged magnetic moment at different field intensities is color-coded by the number of particles in each modeled TRM assembly. Gray-shaded areas indicate ancient field intensities recovered from paleointensity studies (Bono et al., 2019; Evans & Tikoo, 2022; Huang et al., 2024; Jung et al., 2024; Nichols et al., 2021; Volk et al., 2021), while the blue-shaded area shows Earth's current magnetic field strength range. The right y-axis depicts the sensitivity of major magnetometers used in rock magnetism, including the Quantum Diamond Microscope (QDM; Fu et al., 2020), SQUID microscope (Weiss et al., 2007), and the 2G Superconducting Rock Magnetometer. Planet illustrations are credited to NASA, and the Late Ediacaran paleogeography (580 Myr) is from Meert and Torsvik (2003).
+<div>
 
 ===============================================================================
 
@@ -232,30 +242,42 @@ Modelling and processing magnetic microscopy data
 </div>
 
 ===============================================================================
-# Needs
+<h1>We need algorithms for <b>automatic detection</b> of magnetic grains and its <b>magnetic moment</b> determination<h1>
 
-- Algorithms for **automatic detection** of magnetic **grains** and its **magnetic moment** determination
 
 ===============================================================================
 <img src="assets/paper_1.png" style="width: 80%" >
 <img src="assets/paper_2.png" style="width: 80%" >
 
 ===============================================================================
-<!-- .slide: data-background-opacity="1" data-background-image="assets/synthetic.png"  data-background-size="contain" data-background-color="#262626" -->
 
-===============================================================================
 <p class="text-left"> <b>Step 1 - Source Detection</b></p>
-<p class="text-left"> <b>Step 2 - Iterative processing (per window)</b></p>
+<p class="fragment text-left" data-fragment-index="2"> <b>Step 2 - Iterative processing (per window)</b></p>
 <ul>
-  <li>(a) <strong>Isolate data</strong> – Select magnetic data inside window</li>
-  <li>(b) <strong>Euler deconvolution</strong> – Estimate source <em>position</em></li>
-  <li>(c) <strong>Linear inversion</strong> – Estimate dipole <em>moment</em> using fixed position</li>
-  <li>(d) <strong>Non-linear inversion</strong> – Refine position & moment via <a href="https://academic.oup.com/comjnl/article-abstract/7/4/308/354237?redirectedFrom=fulltext">Nelder-Mead</a></li>
-  <li>(e) <strong>Signal removal</strong> – Forward model dipole & subtract from full dataset</li>
+  <li class="fragment" data-fragment-index="3">(a) <strong>Isolate data</strong> – Select magnetic data inside window</li>
+  <li class="fragment" data-fragment-index="4">(b) <strong>Euler deconvolution</strong> – Estimate source <em>position</em></li>
+  <li class="fragment" data-fragment-index="5">(c) <strong>Linear inversion</strong> – Estimate dipole <em>moment</em> using fixed position</li>
+  <li class="fragment" data-fragment-index="6">(d) <strong>Non-linear inversion</strong> – Refine position & moment via
+    <span class="fragment fade-in-then-out" data-fragment-index="6"> 
+      <a href="https://academic.oup.com/comjnl/article-abstract/7/4/308/354237?redirectedFrom=fulltext">Nelder-Mead</a>
+    </span>
+    <span class="fragment fade-in" data-fragment-index="7">
+      <p>a <a href="https://academic.oup.com/comjnl/article-abstract/7/4/308/354237?redirectedFrom=fulltext">Levenberg–Marquardt-based inversion</a></p>
+    </span>
+  </li>
+  <li class="fragment" data-fragment-index="8">(e) <strong>Signal removal</strong> – Forward model dipole & subtract from full dataset</li>
 </ul>
-<p class="text-left"> <b>Step 3 - Repeat detection on residual data:</b> Apply steps 1 and 2  to the stripped dataset to identify new sources and compute their parameters
+<p class="fragment text-left" data-fragment-index="10"><b>Step 3 - Repeat detection on residual data:</b> Apply steps 1 and 2  to the stripped dataset to identify new sources and compute their parameters
+
 
 ===============================================================================
+
+<img src="assets/detection.png" style="width: 80%" >
+
+
+
+===============================================================================
+
 ## Step 1: Source Detection
 - **Goal:** isolate each magnetic particle in the image  
 - **Methods used:**
