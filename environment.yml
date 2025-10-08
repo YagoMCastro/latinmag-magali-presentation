@@ -5,3 +5,17 @@ channels:
 dependencies:
   - python==3.9
   - livereload==2.6.*
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - jupyterlab
+  - black
+  - pooch
+  - verde
+  - harmonica
+  - ensaio
+  # Things that need to come from pip
+  - pip:
+    - black[jupyter]
+    - git+https://github.com/compgeolab/magali
