@@ -62,22 +62,6 @@ Feel free to screenshot/share/reuse this presentation
 
 ===============================================================================
 
-<h1>The Reliability Question</h1>
-
-<ul>
-  <li class="fragment"><b>Berndt et al. (2016)</b> modeled idealized, equidimensional single-domain (SD) magnetite grains</li>
-  <li class="fragment">They concluded that a reliable TRM requires <b>millions to billions of particles</b></li>
-  <li class="fragment">Small-scale methods would therefore be <b>statistically unreliable</b></li>
-  <li class="fragment">This created doubt about <b>whether a few grains</b> can faithfully record field direction</li>
-</ul>
-
-<div class="footnote-left">
-
-[Berndt et al. (2016)](https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2015JB012441)
-</div>
-
-===============================================================================
-
 <img src="assets/bellon_paper.png" style="width: 80%" >
 
 ===============================================================================
@@ -86,7 +70,6 @@ Feel free to screenshot/share/reuse this presentation
 
 <ul>
   <li class="fragment"><b>Bellon et al. (2025)</b> tested more realistic, <b>non-equidimensional grains</b> using micromagnetic modeling</li>
-  <li class="fragment">Ellipsoidal (prolate, oblate, triaxial) shapes better represent <b>natural magnetic particles</b></li>
   <li class="fragment">Found that <b>grain morphology stabilizes magnetization</b> even within the “magnetically unstable zone”</li>
   <li class="fragment">Assemblages of only <b>tens to hundreds of grains</b> can produce a coherent TRM direction</li>
 </ul>
@@ -105,28 +88,6 @@ Feel free to screenshot/share/reuse this presentation
 Angular misfit between the applied field and TRMs, averaged across different grain morphologies. In panel (a), angular misfits were averaged across morphologies for the same number of particles at each field intensity, with bars representing the corresponding standard deviations. In panel (b), the averaged magnetic moment at different field intensities is color-coded by the number of particles in each modeled TRM assembly. Gray-shaded areas indicate ancient field intensities recovered from paleointensity studies (Bono et al., 2019; Evans & Tikoo, 2022; Huang et al., 2024; Jung et al., 2024; Nichols et al., 2021; Volk et al., 2021), while the blue-shaded area shows Earth's current magnetic field strength range. The right y-axis depicts the sensitivity of major magnetometers used in rock magnetism, including the Quantum Diamond Microscope (QDM; Fu et al., 2020), SQUID microscope (Weiss et al., 2007), and the 2G Superconducting Rock Magnetometer. Planet illustrations are credited to NASA, and the Late Ediacaran paleogeography (580 Myr) is from Meert and Torsvik (2003).
 <div>
 
-===============================================================================
-
-<h1>Key Points</h1>
-<ul>
-  <li class="fragment">Most paleomagnetic carriers are <b>not ideal SD grains</b>, but particles in <b>vortex or PSD states</b></li>
-  <li class="fragment">Bulk magnetization averages out grain-scale variability, limiting interpretation of recording fidelity</li> 
-</ul>
-
-
-===============================================================================
-
-<div class="r-stretch">
-
-  <img src="assets/microscope-sample.svg" height=100%>
-
-</div>
-
-<div class="footnote-center">
-
-[Souza-Junior (2024)](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2023GC011082)
-
-</div>
 
 ===============================================================================
 <div class="r-stretch">
