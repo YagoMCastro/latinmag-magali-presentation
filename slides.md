@@ -57,6 +57,11 @@ Feel free to screenshot/share/reuse this presentation
 </div>
 
 ===============================================================================
+<div class="r-stretch">
+  <img src="assets/arrow.svg" height=100%>
+</div>
+
+===============================================================================
 
 <img src="assets/berndt_paper.png" style="width: 80%" >
 
