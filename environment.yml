@@ -15,6 +15,7 @@ dependencies:
   - verde
   - harmonica
   - ensaio
+  - pip
   # Things that need to come from pip
   - pip:
     - black[jupyter]
