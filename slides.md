@@ -360,6 +360,7 @@ plt.show()
 <!-- .slide: data-background-opacity="1" data-background-image="assets/magali_code_example.png"  data-background-size="contain" data-background-color="#262626" -->
 
 ===============================================================================
+
 # Conclusions
 
 <div class="fragment text-left">
@@ -371,37 +372,88 @@ plt.show()
 - <strong>Magali</strong> brings automation, reproducibility, and speed to these analyses
 
 </div>
+<style>
+  .fragment .inline{
+    display: inline !important;
+  }
+</style>
 <div class="fragment text-left">
 
-- It integrates open tools, FAIR data, and transparent workflows for magnetic research
+  - <span class="inline">It integrates open tools,</span>
+</div>
+
+
+===============================================================================
+# Conclusions
+
+<div class="text-left">
+
+- Magnetic microscopy lets us investigate magnetism at the grain scale
+</div>
+<div class="text-left">
+
+- <strong>Magali</strong> brings automation, reproducibility, and speed to these analyses
+
+</div>
+<style>
+  .fragment .inline{
+    display: inline !important;
+  }
+</style>
+
+<div class="text-left">
+
+  - <span class="inline">It integrates open tools,</span><span class="inline"> FAIR data,</span>
+</div>
+<div class="footnote-center">
+
+<b>FAIR</b>: <b>F</b>indable, <b>A</b>ccessible, <b>I</b>nteroperable and <b>R</b>eusable</div>
 
 </div>
 
 
 ===============================================================================
+# Conclusions
+
+<div class="text-left">
+
+- Magnetic microscopy lets us investigate magnetism at the grain scale
+</div>
+<div class="text-left">
+
+- <strong>Magali</strong> brings automation, reproducibility, and speed to these analyses
+
+</div>
+<style>
+  .fragment .inline{
+    display: inline !important;
+  }
+</style>
+
+<div class="text-left">
+
+- It integrates open tools, FAIR data, and transparent workflows for magnetic research
+</div>
+
+
+===============================================================================
 # Future work
-<ul>
-  <li class="fragment text-left">
-  
-  - Provide, discuss, and establish data conventions for magnetic microscopy.
-  
-  </li>
-  <li class="fragment text-left">
-  
-  - Write functions to read data from different microscope systems.
-  
-  </li>
-  <li class="fragment text-left">
-  
-  - Add more datasets to <strong>Ensaio</strong> for testing and community use.
-  
-  </li>
-  <li class="fragment text-left">
-  
-  - Release <strong>Magali 1.0</strong> with improved docs and structure.
-  
-  </li>
-</ul>
+<div class="fragment text-left">
+
+- Provide, discuss, and establish data conventions for magnetic microscopy
+</div>
+<div class="fragment text-left">
+
+- Write functions to read data from different microscope systems
+</div>
+<div class="fragment text-left">
+
+- Add more datasets to <strong>Ensaio</strong> for testing and community use
+</div>
+<div class="fragment text-left">
+
+- Release <strong>Magali 1.0</strong> with improved docs and structure
+</div>
 
 ===============================================================================
 <!-- .slide: data-background-opacity="0.2" data-background-image="assets/magali-logo.png"  data-background-size="contain" data-background-color="#262626" -->
