@@ -227,77 +227,153 @@ Modelling and processing magnetic microscopy data
 
 </div>
 
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  /* Tight fragments */
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  /* Small spacing between logical code blocks */
+  /* This class may not be needed if all spacing is removed */
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+<span class="fragment">
+import numpy as np
+import magali as mg
+import harmonica as hm
+import skimage.exposure
+import xarray as xr
+import matplotlib.pyplot as plt
+import ensaio
+</span><span class="fragment">
+fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
+data = mg.read_qdm_harvard(fname)
+</span><span class="fragment">
+height_difference = 5.0
+data_up = (
+    hm.upward_continuation(data, height_difference)
+    .assign_attrs(data.attrs)
+    .assign_coords(x=data.x, y=data.y)
+    .assign_coords(z=data.z + height_difference)
+    .rename("bz")
+)
+</span><span class="fragment">
+dx, dy, dz, tga = mg.gradient(data_up)
+data_up["dx"], data_up["dy"], data_up["dz"], data_up["tga"] = dx, dy, dz, tga
+</span><span class="fragment">
+stretched = skimage.exposure.rescale_intensity(
+    tga, in_range=tuple(np.percentile(tga, (1, 99)))
+)
+data_tga_stretched = xr.DataArray(stretched, coords=data_up.coords)
+</span>
+</code></pre>
+</section>
 
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  /* Tight fragments */
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  /* Small spacing between logical code blocks */
+  /* This class may not be needed if all spacing is removed */
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+</span><span>
+bounding_boxes = mg.detect_anomalies(
+    data_tga_stretched,
+    size_range=[30, 50],
+    detection_threshold=0.07,
+    border_exclusion=2,
+)
+</span><span class="fragment">
+data_updated, locations_, dipole_moments_, r2_values = mg.iterative_nonlinear_inversion(
+    data_up,
+    bounding_boxes,
+    height_difference=height_difference,
+    copy_data=True,
+)
+</span><span class="fragment">
+fig, ax = plt.subplots()
+data.plot.pcolormesh(ax=ax, cmap="seismic", vmin=-5000, vmax=5000)
+mg.plot_bounding_boxes(bounding_boxes, ax=ax, color="black", linewidth=1.5)
+plt.show()
+</span>
+</code></pre>
+</section>
+
+===============================================================================
+<!-- .slide: data-background-opacity="1" data-background-image="assets/magali_code_example.png"  data-background-size="contain" data-background-color="#262626" -->
+
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  /* Tight fragments */
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  /* Small spacing between logical code blocks */
+  /* This class may not be needed if all spacing is removed */
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+</span><span>
+bounding_boxes = mg.detect_anomalies(
+    data_tga_stretched,
+    size_range=[30, 50],
+    detection_threshold=0.07,
+    border_exclusion=2,
+)
+</span><span class="fragment">
+data_updated, locations_, dipole_moments_, r2_values = mg.iterative_nonlinear_inversion(
+    data_up,
+    bounding_boxes,
+    height_difference=height_difference,
+    copy_data=True,
+)
+</span><span class="fragment">
+fig, ax = plt.subplots()
+data.plot.pcolormesh(ax=ax, cmap="seismic", vmin=-5000, vmax=5000)
+mg.plot_bounding_boxes(bounding_boxes, ax=ax, color="black", linewidth=1.5)
+plt.show()
+</span>
+</code></pre>
+</section>
 
 ===============================================================================
 
-<p class="text-left"> <b>Step 1 - Source Detection</b></p>
-<p class="fragment text-left" data-fragment-index="2"> <b>Step 2 - Iterative processing (per window)</b></p>
-<ul>
-  <li class="fragment" data-fragment-index="3">(a) <strong>Isolate data</strong> – Select magnetic data inside window</li>
-  <li class="fragment" data-fragment-index="4">(b) <strong>Euler deconvolution</strong> – Estimate source <em>position</em></li>
-  <li class="fragment" data-fragment-index="5">(c) <strong>Linear inversion</strong> – Estimate dipole <em>moment</em> using fixed position</li>
-  <li class="fragment" data-fragment-index="6">(d) <strong>Non-linear inversion</strong> – Refine position & moment via
-    <span class="fragment fade-in-then-out" data-fragment-index="6"> 
-      <a href="https://academic.oup.com/comjnl/article-abstract/7/4/308/354237?redirectedFrom=fulltext">Nelder-Mead</a>
-    </span>
-    <span class="fragment fade-in" data-fragment-index="7">
-      <p>a <a href="https://academic.oup.com/comjnl/article-abstract/7/4/308/354237?redirectedFrom=fulltext">Levenberg–Marquardt-based inversion</a></p>
-    </span>
-  </li>
-  <li class="fragment" data-fragment-index="8">(e) <strong>Signal removal</strong> – Forward model dipole & subtract from full dataset</li>
-</ul>
-<p class="fragment text-left" data-fragment-index="10"><b>Step 3 - Repeat detection on residual data:</b> Apply steps 1 and 2  to the stripped dataset to identify new sources and compute their parameters
 
-
-===============================================================================
-<!-- .slide: data-background-opacity="1" data-background-image="assets/detection.png"  data-background-size="contain" data-background-color="#262626" -->
-
-===============================================================================
-
-<img src="assets/detection.png" style="width: 80%" >
-
-===============================================================================
-```python
-def test_dipole_bz_grid(souza_junior_model):
-    # Use model fixture from _models.py
-    data = souza_junior_model
-
-    # Test units
-    assert data.x.units == "µm"
-    assert data.y.units == "µm"
-    assert data.units == "nT"
-
-    # Test array sizes
-    assert data.x.size == 1001
-    assert data.y.size == 1001
-    assert data.size == 1002001
-
-    # Test data name
-    assert data.long_name == "vertical magnetic field"
-
-    # Test if data is a DataArray
-    assert isinstance(data.x, xr.DataArray)
-    assert isinstance(data.y, xr.DataArray)
-    assert isinstance(data, xr.DataArray)
-```
-
-===============================================================================
-<!-- .slide: data-background-opacity="1" data-background-image="assets/documentation.png"  data-background-size="contain" data-background-color="#262626" -->
-
-===============================================================================
-<!-- .slide: data-background-opacity="1" data-background-image="assets/api.png"  data-background-size="contain" data-background-color="#262626" -->
-
-===============================================================================
-<!-- .slide: data-background-opacity="1" data-background-image="assets/doc_function.png"  data-background-size="contain" data-background-color="#262626" -->
-
-===============================================================================
-<!-- .slide: data-background-opacity="1" data-background-image="assets/fatiando-data.png"  data-background-size="contain" data-background-color="#262626" -->
-
-===============================================================================
-<!-- .slide: data-background-opacity="1" data-background-image="assets/morroco.png"  data-background-size="contain" data-background-color="#262626" -->
-
-===============================================================================
 <!-- .slide: data-background-opacity="0.2" data-background-image="assets/magali-logo.png"  data-background-size="contain" data-background-color="#262626" -->
 
 <div class="r-stretch centered">
