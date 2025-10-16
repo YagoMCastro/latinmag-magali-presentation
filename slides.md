@@ -234,15 +234,12 @@ Modelling and processing magnetic microscopy data
     line-height: 1.0em !important;
     font-size: 1.3em !important;
   }
-  /* Tight fragments */
   .fragment {
     display: block;
     margin: 0 !important;
     padding: 0 !important;
     transform: none !important;
   }
-  /* Small spacing between logical code blocks */
-  /* This class may not be needed if all spacing is removed */
   .block-space {
     margin-top: -1.0em !important;
   }
@@ -271,12 +268,6 @@ data_up = (
 </span><span class="fragment">
 dx, dy, dz, tga = mg.gradient(data_up)
 data_up["dx"], data_up["dy"], data_up["dz"], data_up["tga"] = dx, dy, dz, tga
-</span><span class="fragment">
-stretched = skimage.exposure.rescale_intensity(
-    tga, in_range=tuple(np.percentile(tga, (1, 99)))
-)
-data_tga_stretched = xr.DataArray(stretched, coords=data_up.coords)
-</span>
 </code></pre>
 </section>
 
@@ -287,21 +278,24 @@ data_tga_stretched = xr.DataArray(stretched, coords=data_up.coords)
     line-height: 1.0em !important;
     font-size: 1.3em !important;
   }
-  /* Tight fragments */
   .fragment {
     display: block;
     margin: 0 !important;
     padding: 0 !important;
     transform: none !important;
   }
-  /* Small spacing between logical code blocks */
-  /* This class may not be needed if all spacing is removed */
   .block-space {
     margin-top: -1.0em !important;
   }
 </style>
 <pre class="compact"><code class="python" data-trim data-noescape>
 </span><span>
+stretched = skimage.exposure.rescale_intensity(
+    tga, in_range=tuple(np.percentile(tga, (1, 99)))
+)
+data_tga_stretched = xr.DataArray(stretched, coords=data_up.coords)
+</span>
+</span><span class="fragment">
 bounding_boxes = mg.detect_anomalies(
     data_tga_stretched,
     size_range=[30, 50],
@@ -315,11 +309,49 @@ data_updated, locations_, dipole_moments_, r2_values = mg.iterative_nonlinear_in
     height_difference=height_difference,
     copy_data=True,
 )
+</span>
+</code></pre>
+</section>
+
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+</span><span>
+locations_arr = np.array(locations_)
 </span><span class="fragment">
 fig, ax = plt.subplots()
+</span><span class="fragment">
 data.plot.pcolormesh(ax=ax, cmap="seismic", vmin=-5000, vmax=5000)
+</span><span class="fragment">
 mg.plot_bounding_boxes(bounding_boxes, ax=ax, color="black", linewidth=1.5)
+</span><span class="fragment">
+ax.scatter(
+    locations_arr[:, 0],  # x
+    locations_arr[:, 1],  # y
+    c="green",
+    marker=".",
+    s=60,
+    label="Dipole estimated location"
+)
+plt.legend()
+</span><span class="fragment">
 plt.show()
+</span><span class="fragment">
 </span>
 </code></pre>
 </section>
@@ -328,52 +360,50 @@ plt.show()
 <!-- .slide: data-background-opacity="1" data-background-image="assets/magali_code_example.png"  data-background-size="contain" data-background-color="#262626" -->
 
 ===============================================================================
-<section>
-<style>
-  pre.compact code {
-    line-height: 1.0em !important;
-    font-size: 1.3em !important;
-  }
-  /* Tight fragments */
-  .fragment {
-    display: block;
-    margin: 0 !important;
-    padding: 0 !important;
-    transform: none !important;
-  }
-  /* Small spacing between logical code blocks */
-  /* This class may not be needed if all spacing is removed */
-  .block-space {
-    margin-top: -1.0em !important;
-  }
-</style>
-<pre class="compact"><code class="python" data-trim data-noescape>
-</span><span>
-bounding_boxes = mg.detect_anomalies(
-    data_tga_stretched,
-    size_range=[30, 50],
-    detection_threshold=0.07,
-    border_exclusion=2,
-)
-</span><span class="fragment">
-data_updated, locations_, dipole_moments_, r2_values = mg.iterative_nonlinear_inversion(
-    data_up,
-    bounding_boxes,
-    height_difference=height_difference,
-    copy_data=True,
-)
-</span><span class="fragment">
-fig, ax = plt.subplots()
-data.plot.pcolormesh(ax=ax, cmap="seismic", vmin=-5000, vmax=5000)
-mg.plot_bounding_boxes(bounding_boxes, ax=ax, color="black", linewidth=1.5)
-plt.show()
-</span>
-</code></pre>
-</section>
+# Conclusions
+
+<div class="fragment text-left">
+
+- Magnetic microscopy lets us investigate magnetism at the grain scale
+</div>
+<div class="fragment text-left">
+
+- <strong>Magali</strong> brings automation, reproducibility, and speed to these analyses
+
+</div>
+<div class="fragment text-left">
+
+- It integrates open tools, FAIR data, and transparent workflows for magnetic research
+
+</div>
+
 
 ===============================================================================
+# Future work
+<ul>
+  <li class="fragment text-left">
+  
+  - Provide, discuss, and establish data conventions for magnetic microscopy.
+  
+  </li>
+  <li class="fragment text-left">
+  
+  - Write functions to read data from different microscope systems.
+  
+  </li>
+  <li class="fragment text-left">
+  
+  - Add more datasets to <strong>Ensaio</strong> for testing and community use.
+  
+  </li>
+  <li class="fragment text-left">
+  
+  - Release <strong>Magali 1.0</strong> with improved docs and structure.
+  
+  </li>
+</ul>
 
-
+===============================================================================
 <!-- .slide: data-background-opacity="0.2" data-background-image="assets/magali-logo.png"  data-background-size="contain" data-background-color="#262626" -->
 
 <div class="r-stretch centered">
