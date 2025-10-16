@@ -85,15 +85,16 @@ Feel free to screenshot/share/reuse this presentation
 </div>
 
 ===============================================================================
+<img src="assets/bellon_result_1.png" style="width: 100%">
 
-<img src="assets/bellon_result.png" style="width: 50%">
+===============================================================================
+<img src="assets/bellon_result_2.png" style="width: 100%">
 
-<div class="footnote-left">
+===============================================================================
+<img src="assets/bellon_result_3.png" style="width: 100%">
 
-[Bellon et al. (2025)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025GL114771)
-</div>
-
-
+===============================================================================
+<img src="assets/bellon_result_4.png" style="width: 100%">
 
 ===============================================================================
 
