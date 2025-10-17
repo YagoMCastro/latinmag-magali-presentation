@@ -95,11 +95,18 @@ Feel free to screenshot/share/reuse this presentation
 
 <h1>Revisiting the Assumptions</h1>
 
-<ul>
-  <li class="fragment"><b>Bellon et al. (2025)</b> tested more realistic, <b>non-equidimensional grains</b> using micromagnetic modeling</li>
-  <li class="fragment">Found that <b>grain morphology stabilizes magnetization</b> even within the “magnetically unstable zone”</li>
-  <li class="fragment">Assemblages of only <b>tens to hundreds of grains</b> can produce a coherent TRM direction</li>
-</ul>
+<div class="fragment text-left">
+
+- Bellon et al. (2025) modeled vortex-state grains, a more realistic scenario for weak-field conditions, using micromagnetic simulations.
+</div>
+<div class="fragment text-left">
+
+- <b>Dozens to thousands</b> of vortex-state grains record a reliable TRM, indicating that the field was not ultra-weak.
+</div>
+<div class="fragment text-left">
+
+- Assemblages of only <b>tens to hundreds of grains</b> can produce a coherent TRM direction
+</div>
 
 <div class="footnote-left">
 
@@ -119,32 +126,26 @@ Feel free to screenshot/share/reuse this presentation
 <img src="assets/bellon_result_4.png" style="width: 100%">
 
 ===============================================================================
-
-<!-- .slide: class="slide-title" data-background-opacity="1" data-background-image="assets/real_data.png"  data-background-size="contain" -->
-
-===============================================================================
-<img src="assets/angular_misfit_basalt_vs_ceramic.png" style="width: 100%">
-
-===============================================================================
-# Needs
-<div>
-
-- Algorithms for **automatic detection** of magnetic **grains** and its **magnetic moment** determination
-
-</div>
+<img src="assets/example_unmixxing_components.png" style="width: 100%">
 
 ===============================================================================
 <img src="assets/paper_1.png" style="width: 80%" >
 <img src="assets/paper_2.png" style="width: 80%" >
 
 ===============================================================================
+<img src="assets/example_unmixxing_components.png" style="width: 100%">
+
+===============================================================================
+<img src="assets/stereogram_unmixxing_components.png" style="width: 100%">
+
+===============================================================================
 # Needs
-<div >
+<div class="fragment text-left">
 
 - Algorithms for **automatic detection** of magnetic **grains** and its **magnetic moment** determination
 
 </div>
-<div class="fragment">
+<div class="fragment text-left">
 
 - **Open software** for forward **modelling** and **inversion** techniques specific to magnetic microscopy 
 
@@ -245,13 +246,16 @@ Modelling and processing magnetic microscopy data
 </style>
 <pre class="compact"><code class="python" data-trim data-noescape>
 <span class="fragment">
+# Importing standard Python libraries
 import numpy as np
-import magali as mg
-import harmonica as hm
 import skimage.exposure
 import xarray as xr
 import matplotlib.pyplot as plt
+</span><span class="fragment">
+# Import Fatiando a Terra libraries
+import harmonica as hm
 import ensaio
+import magali as mg
 </span><span class="fragment">
 fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
 data = mg.read_qdm_harvard(fname)
