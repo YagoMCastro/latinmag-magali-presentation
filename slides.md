@@ -246,7 +246,7 @@ Modelling and processing magnetic microscopy data
 </style>
 <pre class="compact"><code class="python" data-trim data-noescape>
 <span class="fragment">
-# Importing standard Python libraries
+# Import standard Python libraries
 import numpy as np
 import skimage.exposure
 import xarray as xr
@@ -257,9 +257,125 @@ import harmonica as hm
 import ensaio
 import magali as mg
 </span><span class="fragment">
+#Download the data
+fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
+data = mg.read_qdm_harvard(fname)
+</code></pre>
+</section>
+
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+<span class="fragment">
+# Import standard Python libraries
+import numpy as np
+import skimage.exposure
+import xarray as xr
+import matplotlib.pyplot as plt
+</span><span class="fragment">
+# Import Fatiando a Terra libraries
+import harmonica as hm
+import ensaio
+import magali as mg
+</span><span class="fragment">
+#Download the data
+fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
+data = mg.read_qdm_harvard(fname)
+</code></pre>
+</section>
+
+===============================================================================
+
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+array([[ 352.40587477,   94.8913792 ,   41.61924299, ...,  470.18833933,
+         129.20055397,   18.50120941],
+       [ 525.04809649,  624.84659897,   53.45418   , ...,  450.42515609,
+         240.12455308,  -73.61367693],
+       [ 105.0939369 ,  638.76559489,  307.60736872, ...,  236.91326522,
+         386.8498122 ,  -86.44215589],
+       ...,
+       [ -83.74367957,   32.98078244, -411.75073652, ...,  745.99373583,
+        1036.20033954, -140.64317643],
+       [ 171.17113661, -214.47801235,  159.23437984, ...,  124.58138395,
+         258.54331931,  -90.3376945 ],
+       [  80.60950354,  273.08367487,  118.23499313, ...,   -4.19572521,
+         -53.55728012,    2.10335918]])
+Coordinates:
+  * x        (x) float64 8kB 0.0 2.35 4.7 7.05 ... 2.249e+03 2.251e+03 2.254e+03
+  * y        (y) float64 5kB 0.0 2.35 4.7 7.05 ... 1.403e+03 1.405e+03 1.408e+03
+    z        (y, x) float64 5MB 5.0 5.0 5.0 5.0 5.0 5.0 ... 5.0 5.0 5.0 5.0 5.0
+Attributes:
+    long_name:  vertical magnetic field
+    units:      nT
+</code></pre>
+</section>
+
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+<span class="fragment">
+# Import standard Python libraries
+import numpy as np
+import skimage.exposure
+import xarray as xr
+import matplotlib.pyplot as plt
+</span><span class="fragment">
+# Import Fatiando a Terra libraries
+import harmonica as hm
+import ensaio
+import magali as mg
+</span><span class="fragment">
+#Download the data
 fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
 data = mg.read_qdm_harvard(fname)
 </span><span class="fragment">
+# Upward continuation
 height_difference = 5.0
 data_up = (
     hm.upward_continuation(data, height_difference)
@@ -269,6 +385,7 @@ data_up = (
     .rename("bz")
 )
 </span><span class="fragment">
+# Calculate Total Gradient Amplitude (TGA)
 dx, dy, dz, tga = mg.gradient(data_up)
 data_up["dx"], data_up["dy"], data_up["dz"], data_up["tga"] = dx, dy, dz, tga
 </code></pre>
