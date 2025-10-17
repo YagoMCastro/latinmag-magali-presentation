@@ -25,7 +25,7 @@ The reveal.js configuration can be found in index.html
 <div class="col-large">
 
 <i class="fa fa-calendar-alt" style="margin: 0 10px 0 0"></i>
-[DATE] October 2025
+20 of October 2025
 <span style="margin: 0 20px"></span>
 $8^{th}$ Biennial LATINMAG Meeting | Morelia, Mexico
 
@@ -59,6 +59,28 @@ Feel free to screenshot/share/reuse this presentation
 ===============================================================================
 <div class="r-stretch">
   <img src="assets/arrow.svg" height=100%>
+</div>
+
+===============================================================================
+<div class="r-stretch">
+
+  <img src="assets/qdm.jpg" height=115%>
+
+</div>
+<br>
+<div class="footnote-left">
+
+[Harvard Paleomagnetics Lab](https://paleomag.fas.harvard.edu/laboratory)
+</div>
+
+===============================================================================
+<!-- .slide: class="slide-title" data-background-opacity="1" data-background-image="assets/ceramic.png"  data-background-size="contain" -->
+
+<div class="r-stretch">
+</div>
+<div class="footnote-center">
+
+[Souza-Junior et al 2024](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2023GC011082)
 </div>
 
 ===============================================================================
@@ -101,31 +123,7 @@ Feel free to screenshot/share/reuse this presentation
 <!-- .slide: class="slide-title" data-background-opacity="1" data-background-image="assets/real_data.png"  data-background-size="contain" -->
 
 ===============================================================================
-
 <img src="assets/angular_misfit_basalt_vs_ceramic.png" style="width: 100%">
-
-
-===============================================================================
-<div class="r-stretch">
-
-  <img src="assets/qdm.jpg" height=115%>
-
-</div>
-<br>
-<div class="footnote-left">
-
-[Harvard Paleomagnetics Lab](https://paleomag.fas.harvard.edu/laboratory)
-</div>
-
-===============================================================================
-<!-- .slide: class="slide-title" data-background-opacity="1" data-background-image="assets/ceramic.png"  data-background-size="contain" -->
-
-<div class="r-stretch">
-</div>
-<div class="footnote-center">
-
-[Souza-Junior et al 2024](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2023GC011082)
-</div>
 
 ===============================================================================
 # Needs
@@ -352,7 +350,6 @@ ax.scatter(
 plt.legend()
 </span><span class="fragment">
 plt.show()
-</span><span class="fragment">
 </span>
 </code></pre>
 </section>
@@ -361,9 +358,7 @@ plt.show()
 <!-- .slide: data-background-opacity="1" data-background-image="assets/magali_code_example.png"  data-background-size="contain" data-background-color="#262626" -->
 
 ===============================================================================
-
 # Conclusions
-
 <div class="fragment text-left">
 
 - Magnetic microscopy lets us investigate magnetism at the grain scale
@@ -386,7 +381,6 @@ plt.show()
 
 ===============================================================================
 # Conclusions
-
 <div class="text-left">
 
 - Magnetic microscopy lets us investigate magnetism at the grain scale
@@ -415,7 +409,6 @@ plt.show()
 
 ===============================================================================
 # Conclusions
-
 <div class="text-left">
 
 - Magnetic microscopy lets us investigate magnetism at the grain scale
@@ -458,7 +451,6 @@ plt.show()
 
 ===============================================================================
 <!-- .slide: data-background-opacity="0.2" data-background-image="assets/magali-logo.png"  data-background-size="contain" data-background-color="#262626" -->
-
 <div class="r-stretch centered">
 <div>
 
