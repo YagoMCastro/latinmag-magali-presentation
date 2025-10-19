@@ -109,16 +109,18 @@ Feel free to screenshot/share/reuse this presentation
 </div>
 
 ===============================================================================
+# Angular misfit between the applied field and TRMs
 <img src="assets/bellon_result_1.png" style="width: 100%">
 
 ===============================================================================
+# Angular misfit between the applied field and TRMs
 <img src="assets/bellon_result_2.png" style="width: 100%">
 
 ===============================================================================
-<img src="assets/bellon_result_3.png" style="width: 100%">
+<img src="assets/bellon_result_3.png" style="width: 80%">
 
 ===============================================================================
-<img src="assets/bellon_result_4.png" style="width: 100%">
+<img src="assets/bellon_result_4.png" style="width: 80%">
 
 ===============================================================================
 <img src="assets/paper_1.png" style="width: 80%" >
