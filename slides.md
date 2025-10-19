@@ -13,11 +13,13 @@ The reveal.js configuration can be found in index.html
 
 <h1 id="talk-title">
   
-  Open-source solutions for the magnetic microscopy comunity 🧲🔬
+Magali: open software for inversion and analysis of magnetic microscopy data🧲🔬
 
 </h1>
 <p id="talk-authors">
-  <a id="talk-speaker">Yago M Castro</a>
+  <a id="talk-speaker"><b>Yago Moreira Castro</b></a>,
+  Leonardo Uieda,
+  Gelson Ferreira de Souza-Junior
 </p>
 
 <!-- Place location and date side-by-side with affiliation logos -->
@@ -93,21 +95,14 @@ Feel free to screenshot/share/reuse this presentation
 
 ===============================================================================
 
-<h1>Revisiting the Assumptions</h1>
-
 <div class="fragment text-left">
 
-- Bellon et al. (2025) modeled vortex-state grains, a more realistic scenario for weak-field conditions, using micromagnetic simulations.
+- Bellon et al. (2025) modeled vortex-state grains, a more realistic scenario, using micromagnetic simulations.
 </div>
 <div class="fragment text-left">
 
-- <b>Dozens to thousands</b> of vortex-state grains record a reliable TRM, indicating that the field was not ultra-weak.
+- <b>Hundreds to thousands</b> of vortex-state grains record a reliable TRM, indicating that the field was not ultra-weak.
 </div>
-<div class="fragment text-left">
-
-- Assemblages of only <b>tens to hundreds of grains</b> can produce a coherent TRM direction
-</div>
-
 <div class="footnote-left">
 
 [Bellon et al. (2025)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025GL114771)
@@ -124,9 +119,6 @@ Feel free to screenshot/share/reuse this presentation
 
 ===============================================================================
 <img src="assets/bellon_result_4.png" style="width: 100%">
-
-===============================================================================
-<img src="assets/example_unmixxing_components.png" style="width: 100%">
 
 ===============================================================================
 <img src="assets/paper_1.png" style="width: 80%" >
@@ -255,11 +247,11 @@ import matplotlib.pyplot as plt
 # Import Fatiando a Terra libraries
 import harmonica as hm
 import ensaio
-import magali as mg
+import magali
 </span><span class="fragment">
-#Download the data
+# Download the data
 fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
-data = mg.read_qdm_harvard(fname)
+data = magali.read_qdm_harvard(fname)
 </code></pre>
 </section>
 
@@ -280,44 +272,8 @@ data = mg.read_qdm_harvard(fname)
     margin-top: -1.0em !important;
   }
 </style>
-<pre class="compact"><code class="python" data-trim data-noescape>
-<span class="fragment">
-# Import standard Python libraries
-import numpy as np
-import skimage.exposure
-import xarray as xr
-import matplotlib.pyplot as plt
-</span><span class="fragment">
-# Import Fatiando a Terra libraries
-import harmonica as hm
-import ensaio
-import magali as mg
-</span><span class="fragment">
-#Download the data
-fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
-data = mg.read_qdm_harvard(fname)
-</code></pre>
-</section>
-
-===============================================================================
-
-<section>
-<style>
-  pre.compact code {
-    line-height: 1.0em !important;
-    font-size: 1.3em !important;
-  }
-  .fragment {
-    display: block;
-    margin: 0 !important;
-    padding: 0 !important;
-    transform: none !important;
-  }
-  .block-space {
-    margin-top: -1.0em !important;
-  }
-</style>
-<pre class="compact"><code class="python" data-trim data-noescape>
+<pre class="compact"><code class="txt" data-trim data-noescape>
+xarray.DataArray 'bz' (y: 600, x: 960)> Size: 5MB
 array([[ 352.40587477,   94.8913792 ,   41.61924299, ...,  470.18833933,
          129.20055397,   18.50120941],
        [ 525.04809649,  624.84659897,   53.45418   , ...,  450.42515609,
@@ -342,54 +298,7 @@ Attributes:
 </section>
 
 ===============================================================================
-<section>
-<style>
-  pre.compact code {
-    line-height: 1.0em !important;
-    font-size: 1.3em !important;
-  }
-  .fragment {
-    display: block;
-    margin: 0 !important;
-    padding: 0 !important;
-    transform: none !important;
-  }
-  .block-space {
-    margin-top: -1.0em !important;
-  }
-</style>
-<pre class="compact"><code class="python" data-trim data-noescape>
-<span class="fragment">
-# Import standard Python libraries
-import numpy as np
-import skimage.exposure
-import xarray as xr
-import matplotlib.pyplot as plt
-</span><span class="fragment">
-# Import Fatiando a Terra libraries
-import harmonica as hm
-import ensaio
-import magali as mg
-</span><span class="fragment">
-#Download the data
-fname = ensaio.fetch_morroco_speleothem_qdm(version=1, file_format="matlab")
-data = mg.read_qdm_harvard(fname)
-</span><span class="fragment">
-# Upward continuation
-height_difference = 5.0
-data_up = (
-    hm.upward_continuation(data, height_difference)
-    .assign_attrs(data.attrs)
-    .assign_coords(x=data.x, y=data.y)
-    .assign_coords(z=data.z + height_difference)
-    .rename("bz")
-)
-</span><span class="fragment">
-# Calculate Total Gradient Amplitude (TGA)
-dx, dy, dz, tga = mg.gradient(data_up)
-data_up["dx"], data_up["dy"], data_up["dz"], data_up["tga"] = dx, dy, dz, tga
-</code></pre>
-</section>
+<!-- .slide: data-background-image="assets/qdm_data.png"  data-background-size="contain" data-background-color="#262626" -->
 
 ===============================================================================
 <section>
@@ -409,21 +318,112 @@ data_up["dx"], data_up["dy"], data_up["dz"], data_up["tga"] = dx, dy, dz, tga
   }
 </style>
 <pre class="compact"><code class="python" data-trim data-noescape>
-</span><span>
+<span>
+# Upward continuation
+height_difference = 5.0 # μm
+data_up = (
+    hm.upward_continuation(data, height_difference)
+    .assign_attrs(data.attrs)
+    .assign_coords(x=data.x, y=data.y)
+    .assign_coords(z=data.z + height_difference)
+    .rename("bz")
+)
+</span>
+</code></pre>
+</section>
+
+===============================================================================
+<!-- .slide: data-background-image="assets/data_up.png"  data-background-size="contain" data-background-color="#262626" -->
+
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+<span>
+# Calculate Total Gradient Amplitude (TGA)
+dx, dy, dz, tga = magali.gradient(data_up)
+data_up["dx"], data_up["dy"], data_up["dz"], data_up["tga"] = dx, dy, dz, tga
+<span class="fragment">
+# Stretch the contrast of TGA image
 stretched = skimage.exposure.rescale_intensity(
     tga, in_range=tuple(np.percentile(tga, (1, 99)))
 )
 data_tga_stretched = xr.DataArray(stretched, coords=data_up.coords)
 </span>
-</span><span class="fragment">
-bounding_boxes = mg.detect_anomalies(
+</code></pre>
+</section>
+
+===============================================================================
+<!-- .slide: data-background-image="assets/stretched.png"  data-background-size="contain" data-background-color="#262626" -->
+
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+<span>
+# Detect anomalies
+bounding_boxes = magali.detect_anomalies(
     data_tga_stretched,
-    size_range=[30, 50],
-    detection_threshold=0.07,
+    size_range=[20, 150], # μm
+    detection_threshold=0.02,
     border_exclusion=2,
 )
-</span><span class="fragment">
-data_updated, locations_, dipole_moments_, r2_values = mg.iterative_nonlinear_inversion(
+</span>
+</code></pre>
+</section>
+
+===============================================================================
+<!-- .slide: data-background-image="assets/detection.png"  data-background-size="contain" data-background-color="#262626" -->
+
+===============================================================================
+<section>
+<style>
+  pre.compact code {
+    line-height: 1.0em !important;
+    font-size: 1.3em !important;
+  }
+  .fragment {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  .block-space {
+    margin-top: -1.0em !important;
+  }
+</style>
+<pre class="compact"><code class="python" data-trim data-noescape>
+<span>
+# Iterative nonlinear inversion
+data_updated, locations_, dipole_moments_, r2_values = magali.iterative_nonlinear_inversion(
     data_up,
     bounding_boxes,
     height_difference=height_difference,
@@ -451,14 +451,16 @@ data_updated, locations_, dipole_moments_, r2_values = mg.iterative_nonlinear_in
   }
 </style>
 <pre class="compact"><code class="python" data-trim data-noescape>
-</span><span>
+<span>
+# Plot the data
+</span><span class="fragment">
 locations_arr = np.array(locations_)
 </span><span class="fragment">
 fig, ax = plt.subplots()
 </span><span class="fragment">
-data.plot.pcolormesh(ax=ax, cmap="seismic", vmin=-5000, vmax=5000)
+data.plot.pcolormesh(ax=ax, cmap="seismic", vmin=-10000, vmax=10000)
 </span><span class="fragment">
-mg.plot_bounding_boxes(bounding_boxes, ax=ax, color="black", linewidth=1.5)
+magali.plot_bounding_boxes(bounding_boxes, ax=ax, color="black", linewidth=1.5)
 </span><span class="fragment">
 ax.scatter(
     locations_arr[:, 0],  # x
@@ -486,7 +488,7 @@ plt.show()
 </div>
 <div class="fragment text-left">
 
-- <strong>Magali</strong> brings automation, reproducibility, and speed to these analyses
+- <strong>Magali</strong> brings <b>automation, reproducibility</b>, and <b>speed</b> to these analyses
 
 </div>
 <style>
@@ -555,15 +557,15 @@ plt.show()
 # Future work
 <div class="fragment text-left">
 
-- Provide, discuss, and establish data conventions for magnetic microscopy
+- Provide, discuss, and establish <b>data conventions</b> for magnetic microscopy
 </div>
 <div class="fragment text-left">
 
-- Write functions to read data from different microscope systems
+- Write functions to read data from <b>different microscope systems</b>
 </div>
 <div class="fragment text-left">
 
-- Add more datasets to <strong>Ensaio</strong> for testing and community use
+- Add more datasets to <b>Ensaio</b> for testing and <b>community use</b>
 </div>
 <div class="fragment text-left">
 
@@ -572,9 +574,10 @@ plt.show()
 
 ===============================================================================
 <!-- .slide: data-background-opacity="0.2" data-background-image="assets/magali-logo.png"  data-background-size="contain" data-background-color="#262626" -->
-<div class="r-stretch centered">
-<div>
+# Obrigado! ¡Gracias! Thank you!
 
+<div class="row">
+<div class="col">
 <i class="fas fa-comments"></i>
 <br>
 Contact:
@@ -584,15 +587,25 @@ Contact:
 <br>
 Source code for this presentation:
 <br>
-[https://yagomcastro.github.io/magali-msc-qualification/](https://github.com/YagoMCastro/magali-msc-qualification)
+[github.com/YagoMCastro/latinmag-magali-presentation](https://github.com/YagoMCastro/latinmag-magali-presentation)
 
 <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i>
 <br>
-Unless otherwise noted,
-the contents of this presentation are
+The contents of this presentation are
 licensed under the
 <br>
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 </div>
+<div class="col">
+
+[github.com/fatiando/magali](https://github.com/fatiando/magali)
+
+<img src="assets/qr_magali.gif" style="width: 80%" >
 </div>
+</div>
+
+<img src="assets/qr_magali.gif" style="width: 0%" >
+<div class="r-stretch centered">
+<div>
+
