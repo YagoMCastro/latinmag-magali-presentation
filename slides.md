@@ -98,10 +98,12 @@ Feel free to screenshot/share/reuse this presentation
 <div class="fragment text-left">
 
 - Bellon et al. (2025) modeled vortex-state grains, a more realistic scenario, using micromagnetic simulations.
+
 </div>
 <div class="fragment text-left">
 
 - <b>Hundreds to thousands</b> of vortex-state grains record a reliable TRM, indicating that the field was not ultra-weak.
+
 </div>
 <div class="footnote-left">
 
@@ -109,12 +111,11 @@ Feel free to screenshot/share/reuse this presentation
 </div>
 
 ===============================================================================
-# Angular misfit between the applied field and TRMs
-<img src="assets/bellon_result_1.png" style="width: 100%">
+<img src="assets/bellon_result_1.png" style="width: 80%; padding-top: 10rem;">
+
 
 ===============================================================================
-# Angular misfit between the applied field and TRMs
-<img src="assets/bellon_result_2.png" style="width: 100%">
+<img src="assets/bellon_result_2.png" style="width: 80%; padding-top: 10rem;">
 
 ===============================================================================
 <img src="assets/bellon_result_3.png" style="width: 80%">
@@ -488,6 +489,7 @@ plt.show()
 
 - Magnetic microscopy lets us investigate magnetism at the grain scale
 </div>
+
 <div class="fragment text-left">
 
 - <strong>Magali</strong> brings <b>automation, reproducibility</b>, and <b>speed</b> to these analyses
@@ -498,6 +500,7 @@ plt.show()
     display: inline !important;
   }
 </style>
+
 <div class="fragment text-left">
 
   - <span class="inline">It integrates open tools,</span>
@@ -509,7 +512,9 @@ plt.show()
 <div class="text-left">
 
 - Magnetic microscopy lets us investigate magnetism at the grain scale
+
 </div>
+
 <div class="text-left">
 
 - <strong>Magali</strong> brings automation, reproducibility, and speed to these analyses
@@ -525,6 +530,7 @@ plt.show()
 
   - <span class="inline">It integrates open tools,</span><span class="inline"> FAIR data,</span>
 </div>
+
 <div class="footnote-center">
 
 <b>FAIR</b>: <b>F</b>indable, <b>A</b>ccessible, <b>I</b>nteroperable and <b>R</b>eusable</div>
@@ -538,6 +544,7 @@ plt.show()
 
 - Magnetic microscopy lets us investigate magnetism at the grain scale
 </div>
+
 <div class="text-left">
 
 - <strong>Magali</strong> brings automation, reproducibility, and speed to these analyses
@@ -552,6 +559,7 @@ plt.show()
 <div class="text-left">
 
 - It integrates open tools, FAIR data, and transparent workflows for magnetic research
+
 </div>
 
 
@@ -561,18 +569,30 @@ plt.show()
 
 - Provide, discuss, and establish <b>data conventions</b> for magnetic microscopy
 </div>
+
 <div class="fragment text-left">
 
 - Write functions to read data from <b>different microscope systems</b>
+
 </div>
+
 <div class="fragment text-left">
 
 - Add more datasets to <b>Ensaio</b> for testing and <b>community use</b>
+
 </div>
+
 <div class="fragment text-left">
 
 - Release <strong>Magali 1.0</strong> with improved docs and structure
 </div>
+
+===============================================================================
+
+# Acknowledgements
+
+<img src="assets/capes.png" height=100%>
+
 
 ===============================================================================
 <!-- .slide: data-background-opacity="0.2" data-background-image="assets/magali-logo.png"  data-background-size="contain" data-background-color="#262626" -->
